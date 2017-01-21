@@ -1,0 +1,162 @@
+FORMAT: 1A
+HOST: http://54.84.8.232:25890
+
+# CWEBSAPI
+
+# Group Suspension
+
+## Vehicle Suspend List [/vehicle/suspend_list/]
+
+### List All Suspended Vehicles [GET]
+Request (application/json)
+
++ Response 200 (application/json)
+
+   
+        
+    + Body 
+    
+            {
+                "status": "200 OK",
+                "result": {
+                "message": "success",
+                "vehicles": [
+                {
+                    "vehicle_id": 9005,
+                    "suspension_reasons": [
+                        "123",
+                        "123"
+                        ],
+                    "suspension_timestamp": 1484762476,
+                    "suspension_time_min": 0,
+                    "authority_id": 99,
+                    "suspension_time": 1
+                    }
+                ],
+                "number_of_vehicles": 1
+                }
+            }
+        
+
+## Vehicle suspend [/vehicle/action/]
+### Vehicle suspend [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "action" : "suspend",
+                "vehicle_id" : 8080,
+                "authority_id" : 999,
+                "msg_for_dispatch" :  "test di",
+                "msg_for_driver" :   "test"
+            }
+        
+
+
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
+        
+## Driver suspend list [/driver/suspend_list/]
+### Driver Suspend List [GET]
++ Response 200 (application/json)
+
+    + Body 
+    
+            {
+                "status": "200 OK",
+                "result": {
+                "number_of_drivers": 1,
+                "message": "OK",
+                "drivers": [
+                    {
+                    "suspension_timestamp": 1484771831,
+                    "driver_id": 4243,
+                    "suspension_time_min": 0,
+                    "suspension_time": 1
+                    }
+                ]
+            }        
+                
+## Driver Suspend [/supervisor/action/]
+### Driver Suspend [POST]
++ Request (application/json)
+
+    + Body
+    
+            {
+                "action" : "suspend",
+                "driver_id" :  1234,
+                "fleet" : 2,
+                "authority_id" : "667",
+                "msg_id" : 1,
+                "db_action_id" : 3572,
+                "msg_for_dispatch" : "test message for dispatch test message for dispatch",
+                "msg_for_driver" : "test message for driver test message for driver"
+            }
+    
++ Response 200 (application/json)
+    
+    + Body 
+    
+            {
+                "status": "200 OK",
+                "result": {
+                "message": "OK"
+                }     
+            }
+
+  + Schema
+
+            {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string"
+                },
+                "driver_id": {
+                  "type": "integer"
+                },
+                "fleet": {
+                  "type": "integer"
+                },
+                "authority_id": {
+                  "type": "string"
+                },
+                "msg_id": {
+                  "type": "integer"
+                },
+                "db_action_id": {
+                    "type": "string"                
+                },
+                "msg_for_driver"": {
+                  "type": "string"
+                },
+                "msg_for_dispatch": {
+                  "type": "string"
+                }
+              }
+            }
+
+
+# Data Structures
+
+## SuspendVehicle (object)
+    - status: (number)
+    - vehicle_id: number
