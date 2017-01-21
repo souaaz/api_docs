@@ -12,31 +12,12 @@ Request (application/json)
 
 + Response 200 (application/json)
 
-   
-        
-    + Body 
-    
-            {
-                "status": "200 OK",
-                "result": {
-                "message": "success",
-                "vehicles": [
-                {
-                    "vehicle_id": 9005,
-                    "suspension_reasons": [
-                        "123",
-                        "123"
-                        ],
-                    "suspension_timestamp": 1484762476,
-                    "suspension_time_min": 0,
-                    "authority_id": 99,
-                    "suspension_time": 1
-                    }
-                ],
-                "number_of_vehicles": 1
-                }
-            }
-        
+    + Attributes
+        - status (string, required)
+        - result 
+            - message (string, required)
+            - vehicles (array[SuspensionData])
+            - number_of_vehicles (number, required)
 
 ## Vehicle suspend [/vehicle/action/]
 ### Vehicle suspend [POST]
@@ -46,7 +27,14 @@ object containing a question and a collection of answers in the
 form of choices.
 
 + Request (application/json)
-
+    + Attributes
+       
+        - action (string, required) 
+        - vehicle_id (string, required)
+        - authority_i (number, required)
+        - msg_for_dispatch (string)
+        - msg_for_driver (string)
+        
     + Body
     
             {
@@ -62,6 +50,9 @@ form of choices.
 
 + Response 200 (application/json)
 
+    + Attributes
+        ResultNoDataOK 
+        
     + Body
     
             {
@@ -160,3 +151,14 @@ form of choices.
 ## SuspendVehicle (object)
     - status: (number)
     - vehicle_id: number
+## SuspensionData (object)
+    - vehicle_id: (integer)
+    - suspension_timestamp: (integer)
+    - suspension_time_min: (integer)
+    - authority_id: (integer)
+    - suspension_time: (integer)
+    - suspension_reasons: array[string]
+## ResultNoDataOK (object)
+    - status (string)
+    - result:
+        - message (string)
