@@ -158,12 +158,41 @@ form of choices.
 
 + Request (application/json)
     + Attributes
-        - fare_type (string)
-        - operator_id (number)
-        - taxi number (number)
-        - fleet number (number)
         - fare_number (string, required)
+        - fare_type (string)        
         - cancel_reason  (string)
+        - cancel_code (number)
+     
+    
+
++ Response 200 (application/json)
+
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
+        
+## Update Fare [/dispatcher/update_fare/]
+
+### Update Fare [POST]
+
++ Request (application/json)
+    + Attributes
+        - fare_number (string, required)    
+        - action (string, required)
+        - operator_id (number)
+        - operator_name (string)
+        - taxi (number)
+        - fleet (number)
+        - reason  (string)
         - cancel_code (number)
      
         
@@ -182,8 +211,7 @@ form of choices.
                 "message": "success"
                 }
             }
-        
-        
+            
 # Data Structures
 ## CancelFareRequest (object)
     - fare_type: (string)
