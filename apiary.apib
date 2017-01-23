@@ -1,9 +1,9 @@
 FORMAT: 1A
-//HOST: http://54.84.8.232:25890
+HOST: http://54.84.8.232:25890
 //DEV4 - 54.84.8.232:25889
 //DEV2 - 54.84.8.232:25890
 //SMAUG - 10.10.1.239:8889
-HOST: http://10.10.1.239:8889
+//HOST: http://10.10.1.239:8889
 
 # CWEBSAPI
 
@@ -150,8 +150,59 @@ form of choices.
             }
 
 
-# Data Structures
+# Group Update-Cancel-No Show
 
+## Cancel Request [/dispatcher/cancel_book_order/]
+
+### Cancel Request [POST]
+
++ Request (application/json)
+    + Attributes
+        - fare_type (string)
+        - operator_id (number)
+        - taxi number (number)
+        - fleet number (number)
+        - fare_number (string, required)
+        - cancel_reason  (string)
+        - cancel_code (number)
+     
+        
+
++ Response 200 (application/json)
+
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
+        
+        
+# Data Structures
+## CancelFareRequest (object)
+    - fare_type: (string)
+    - operator_id: number
+    - taxi: number
+    - fleet: number
+    - fare_number: string
+    - cancel_reason : string
+    - cancel_code: number
+    
+## UpdateFareRequest (object)
+    - action: (string)
+    - operator_id: number
+    - operator_name: string
+    - taxi: number
+    - fleet: number
+    - fare_number: string
+    - reason : string    
+    
 ## SuspendVehicle (object)
     - status: (number)
     - vehicle_id: number
