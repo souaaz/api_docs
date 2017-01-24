@@ -51,9 +51,10 @@ HOST: http://54.84.8.232:25890
     + Body 
     
             {
-                "start_date" : "2017-01-19 12:00 AM",
-                "start_date" : "2017-01-23 12:00 PM"
-                "search_type" : "driver"
+                "vehicle_id" : 9008,
+                "start_date" : "2017-1-01",
+                "end_date" : "2017-1-19",
+                "num_records" : 20    
             }
     
             
@@ -70,7 +71,7 @@ HOST: http://54.84.8.232:25890
 
 ## Search Fare Source [/fares/search_source/]
 
-### Search Fare Payment [POST]
+### Search Fare Source [POST]
 + Request (application/json)
     + Attributes
         - start_date (string, required)
@@ -82,9 +83,9 @@ HOST: http://54.84.8.232:25890
     + Body 
     
             {
-                "start_date" : "2017-01-19 12:00 AM",
-                "start_date" : "2017-01-23 12:00 PM",
-                "driver_id" : 8080
+                "start_date" : "2017-01-19",
+                "end_date" : "2017-01-23",
+                "driver_id" : 9008
             }
     
             
