@@ -147,40 +147,7 @@ form of choices.
                 }     
             }
 
-  + Schema
-
-            {
-              "$schema": "http://json-schema.org/draft-04/schema#",
-              "type": "object",
-              "properties": {
-                "action": {
-                  "type": "string"
-                },
-                "driver_id": {
-                  "type": "integer"
-                },
-                "fleet": {
-                  "type": "integer"
-                },
-                "authority_id": {
-                  "type": "string"
-                },
-                "msg_id": {
-                  "type": "integer"
-                },
-                "db_action_id": {
-                    "type": "string"                
-                },
-                "msg_for_driver"": {
-                  "type": "string"
-                },
-                "msg_for_dispatch": {
-                  "type": "string"
-                }
-              }
-            }
-
-
+ 
 # Group Update-Cancel-No Show
 
 ## Cancel Request [/dispatcher/cancel_book_order/]
@@ -220,15 +187,7 @@ form of choices.
     + Attributes
         ResultNoDataOK 
         
-    + Body
-    
-            {
-        
-                "status": "200 OK",
-                "result": {
-                "message": "success"
-                }
-            }
+   
             
 # Data Structures
 ## AddressInfo (object)
@@ -320,7 +279,7 @@ form of choices.
 - taxi: 8080 (number)
 - fleet: 2 (number)
 - fare_number: 9241 (string, required)
-- reason : waited too long (string)    
+- reason : 'waited too long' (string)    
 
     
 ## SuspendVehicle (object)
