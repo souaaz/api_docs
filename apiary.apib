@@ -93,22 +93,13 @@ form of choices.
 
 + Response 200 (application/json)
 
-    + Body 
-    
-            {
-                "status": "200 OK",
-                "result": {
-                "number_of_drivers": 1,
-                "message": "OK",
-                "drivers": [
-                    {
-                    "suspension_timestamp": 1484771831,
-                    "driver_id": 4243,
-                    "suspension_time_min": 0,
-                    "suspension_time": 1
-                    }
-                ]
-            }        
+    + Attributes
+        + status (string)
+        + result
+            - message (string)
+            - number_of_drivers (number)
+            - drivers (array[SuspensionDriverData])
+            
                 
 ## Driver Suspend [/supervisor/action/]
 ### Driver Suspend [POST]
@@ -126,14 +117,14 @@ form of choices.
     + Body
     
             {
-                "action" : "suspend",
-                "driver_id" :  1234,
-                "fleet" : 2,
-                "authority_id" : "667",
-                "msg_id" : 1,
-                "db_action_id" : 3572,
-                "msg_for_dispatch" : "test message for dispatch test message for dispatch",
-                "msg_for_driver" : "test message for driver test message for driver"
+            "action" : "suspend",
+            "driver_id" :  1234,
+            "fleet" : 2,
+            "authority_id" : "667",
+            "msg_id" : 1,
+            "db_action_id" : 3572,
+            "msg_for_dispatch" : "test message for dispatch test message for dispatch",
+            "msg_for_driver" : "test message for driver test message for driver"
             }
     
 + Response 200 (application/json)
@@ -293,6 +284,18 @@ form of choices.
 - authority_id: 999 (number)
 - suspension_time: 10 (number)
 - suspension_reasons: ['too fast', 'always late'] array[string]
+
+## SuspendDriver (object)
+- status: 1 (number)
+- driver_id: 8080 (number)
+
+## SuspensionDriverData (object)
+- driver_id (number)
+- suspension_timestamp (number)
+- suspension_time_min (number)
+- suspension_time (number)
+
+
 
 ## ResultNoDataOK (object)
     - status (string)
