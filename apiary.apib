@@ -195,6 +195,18 @@ HOST: http://54.84.8.232:25890
     
     + Attributes
         ResultNoData500
+        
+    + Body 
+
+            { 
+            
+                "status" : "500 Internal Server Error",
+                "result" : {
+                    "message": "failure: message for dispatch is not present"
+                }
+            }
+    
+    
 
 ## Driver suspend list [/driver/suspend_list/]
 ### Driver Suspend List [GET]
@@ -430,6 +442,6 @@ Request (application/json)
         
         
 ## ResultNoData500 (object)
-    - status: 500 Internal Server Error (string)
-    - result:
-        - message: failure: message for dispatch is not present (string)
+    - status (string)
+    - result
+        - message (string)
