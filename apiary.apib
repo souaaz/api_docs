@@ -89,6 +89,8 @@ form of choices.
         
 ## Driver suspend list [/driver/suspend_list/]
 ### Driver Suspend List [GET]
++ Request (application/json)
+
 + Response 200 (application/json)
 
     + Body 
@@ -112,6 +114,15 @@ form of choices.
 ### Driver Suspend [POST]
 + Request (application/json)
 
+   + Attributes
+        - action (string, required) 
+        - driver_id (string, required)
+        - fleet (number)
+        - msg_id (number)
+        - authority_i (number, required)
+        - msg_for_dispatch (string)
+        - msg_for_driver (string)
+        
     + Body
     
             {
