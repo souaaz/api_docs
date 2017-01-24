@@ -67,6 +67,37 @@ HOST: http://54.84.8.232:25890
             - num_entries (number)
             - entries ( array[FarePaymentEntry])
 
+
+## Search Fare Source [/fares/search_source/]
+
+### Search Fare Payment [POST]
++ Request (application/json)
+    + Attributes
+        - start_date (string, required)
+        - end_date (string, required)
+        - vehicle_id (number)
+        - driver_id (number)
+        - num_records (number, optional)
+      
+    + Body 
+    
+            {
+                "start_date" : "2017-01-19 12:00 AM",
+                "start_date" : "2017-01-23 12:00 PM",
+                "driver_id" : 8080
+            }
+    
+            
++ Response 200 (application/json)
+    + Attributes
+        - status (string, required)
+        - result  
+            - message (string)
+            - vehicle_id (number)
+            - driver_id (number)
+            - num_entries (number)
+            - entries ( array[FareSourceEntry])
+
             
                     
 # Group Suspension
@@ -291,8 +322,18 @@ Request (application/json)
     + fare (integer)
     + cc_tip (float)
     + created_on (string)
-    
+    + payment_type (string)
+    + cc_amount (float)
+    + fare_origrate (number)
+    + fare_amount (number)
+    + cc_number (string)
 
+## FareSourceEntry (object)
+    + info (string)
+    + vehicle_id (number)
+    + driver_id (number)
+    + created_on (string)
+    
 ## CancelFareRequest (object)
 + fare_number: 9241 (string, required)
 + fare_type: immediate (enum[string], optional)
