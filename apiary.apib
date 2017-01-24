@@ -58,7 +58,7 @@ HOST: http://54.84.8.232:25890
        
         - action (string, required) 
         - vehicle_id (string, required)
-        - authority_i (number, required)
+        - authority_id (number, required)
         - msg_for_dispatch (string)
         - msg_for_driver (string)
         
@@ -114,7 +114,7 @@ Request (application/json)
         - driver_id (string, required)
         - fleet (number)
         - msg_id (number)
-        - authority_i (number, required)
+        - authority_id (number, required)
         - msg_for_dispatch (string)
         - msg_for_driver (string)
         
@@ -132,7 +132,10 @@ Request (application/json)
             }
     
 + Response 200 (application/json)
-    
+
+    + Attributes
+        ResultNoDataOK 
+        
     + Body 
     
             {
@@ -160,7 +163,6 @@ Request (application/json)
     + Body
     
             {
-        
                 "status": "200 OK",
                 "result": {
                 "message": "success"
