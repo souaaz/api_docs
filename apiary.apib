@@ -16,9 +16,17 @@ HOST: http://54.84.8.232:25890
     + Attributes
         - fare_number (string, required)
         - fare_type (enum[string], optional)
-            - 'immediate'
-            - 'future'
+            - immediate
+            - future
         - via_requested (boolean, optional)
+    
+    + Body 
+    
+            {
+                "fare_number" : "9241",
+                "fare_type" : "immediate"
+            }
+    
             
 + Response 200 (application/json)
     + Attributes
@@ -32,7 +40,6 @@ HOST: http://54.84.8.232:25890
 ## Vehicle Suspend List [/vehicle/suspend_list/]
 
 ### List All Suspended Vehicles [GET]
-Request (application/json)
 
 + Response 200 (application/json)
 
@@ -45,10 +52,6 @@ Request (application/json)
 
 ## Vehicle suspend [/vehicle/action/]
 ### Vehicle suspend [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
 
 + Request (application/json)
     + Attributes
@@ -65,7 +68,7 @@ form of choices.
                 "action" : "suspend",
                 "vehicle_id" : 8080,
                 "authority_id" : 999,
-                "msg_for_dispatch" :  "test di",
+                "msg_for_dispatch" :  "test dispatch",
                 "msg_for_driver" :   "test"
             }
         
@@ -89,6 +92,7 @@ form of choices.
         
 ## Driver suspend list [/driver/suspend_list/]
 ### Driver Suspend List [GET]
+
 Request (application/json)
 
 + Response 200 (application/json)
@@ -249,8 +253,8 @@ Request (application/json)
     
 ## CancelFareRequest (object)
 + fare_type: immediate (enum[string], optional)
-    - 'immediate' 
-    - 'future'
+    - immediate
+    - future
 + operator_id: 1001 (number, optional)
 + taxi: 8080 (number, optional)
 + fleet: 2 (number, optional)
@@ -260,11 +264,11 @@ Request (application/json)
 
 
 ## UpdateFareRequest (object)
-- action: 'keep no show' (enum[string], required)
-    - 'reject no show'
-    - 'accept no show'
-    - 'keep no show'
-    - 'cancel'
+- action: keep no show (enum[string], required)
+    - reject no show
+    - accept no show
+    - keep no show
+    - cancel
 - operator_id: 10001 (number)
 - operator_name: samira (string)
 - taxi: 8080 (number)
