@@ -7,6 +7,26 @@ HOST: http://54.84.8.232:25890
 
 # CWEBSAPI
 
+# Group Fares
+
+## Read Book Order [/fares/read_book_order/]
+
+### Read fare details [POST]
++ Request (application/json)
+    + Attributes
+        - fare_number (string, required)
+        - fare_type (enum[string], optional)
+            - 'immediate'
+            - 'future'
+        - via_requested (boolean, optional)
+            
++ Response 200 (application/json)
+    + Attributes
+        - status (string, required)
+        - result  ReadFareResult (object)
+
+            
+        
 # Group Suspension
 
 ## Vehicle Suspend List [/vehicle/suspend_list/]
@@ -200,10 +220,76 @@ form of choices.
             }
             
 # Data Structures
+## AddressInfo (object)
+    + city (string)
+    + country_code (string)
+    + street_number (string)
+    + country (string)
+    + street_name (string)
+    + building_type (string)
+    + building_number (string)
+    + apartment_code (string)
+    + state (string)
+    + zone (number)
+    + apartment_number (number)
+    + address (string)
+    + lat (float)
+    + lng (float)
+    + zip_code (string)
+    + building_name (string)
+## CallerInfo (object)
+    + phone_account (string)
+    + mobile (string)
+    + disable_call_out (number)
+    + booker (string)
+    + enable_sms (boolean)
+    + passenger_name (string)
+    + email (string)
+## ReadFareResult (object)
+    + message (string)
+    + fare_number (number)
+    + dispatch_datetime (string)
+    + drop_off_datetime (string)
+    + fleet_number (number)
+    + driver_id (number)
+    + vehicle_number (number)
+    + orig_rate (number) 
+    + cancel_reason (string)
+    + pick_up_datetime (string)
+    + payment_method (string)
+    + pick_up_address (AddressInfo)
+    + dispatch_time (string)
+    + passenger_number (string)
+    + remarks (array(string))
+    + is_flat_rate (boolean)
+    + customer_number (number)
+    + drop_off_address (AddressInfo)
+    + vip_number (number)
+    + is_future (boolean)
+    + driver_types (array(number))
+    + caller_info (CallerInfo)
+    + trip_id (string)
+    + notes (array(string))
+    + trip_amount (number)
+    + fare_amount (number)
+    + account_name (string) 
+    + priority (number)
+    + driver_name (string)
+    + booker (string)
+    + account_number (string)
+    + quick_return (boolean)
+    + fare_number (string)
+    + trip_status (string)
+    + permanent_remark (string)
+    + vehicle_types (array(number))
+    + trip_status_id (number)
+    + contract_number (string)
+    + estimated_amount (number)
+    
 ## CancelFareRequest (object)
 + fare_type: immediate (enum[string], optional)
-    - immediate 
-    - future
+    - 'immediate' 
+    - 'future'
 + operator_id: 1001 (number, optional)
 + taxi: 8080 (number, optional)
 + fleet: 2 (number, optional)
@@ -213,11 +299,11 @@ form of choices.
 
 
 ## UpdateFareRequest (object)
-- action: keep no show (enum[string], required)
-    - reject no show
-    - accept no show
-    - keep no show
-    - cancel
+- action: 'keep no show' (enum[string], required)
+    - 'reject no show'
+    - 'accept no show'
+    - 'keep no show'
+    - 'cancel'
 - operator_id: 10001 (number)
 - operator_name: samira (string)
 - taxi: 8080 (number)
@@ -236,7 +322,7 @@ form of choices.
 - suspension_time_min: 1484771831 (number)
 - authority_id: 999 (number)
 - suspension_time: 10 (number)
-- suspension_reasons: [ooo, ooo] array[string]
+- suspension_reasons: ['too fast', 'always late'] array[string]
 
 ## ResultNoDataOK (object)
     - status (string)
