@@ -34,7 +34,41 @@ HOST: http://54.84.8.232:25890
         - result  ReadFareResult (object)
 
             
-        
+## Search Fare Payment [/fares/search_payment/]
+
+### Search Fare Payment [POST]
++ Request (application/json)
+    + Attributes
+        - start_date (string, required)
+        - end_date (string, required)
+        - search_type (enum[string], optional)
+            - vehicle
+            - driver
+        - driver_id (number)
+        - vehicle_id (number)
+        - num_records (number, optional)
+      
+    + Body 
+    
+            {
+                "start_date" : "2017-01-19 12:00 AM",
+                "start_date" : "2017-01-23 12:00 PM"
+                "search_type" : "driver"
+            }
+    
+            
++ Response 200 (application/json)
+    + Attributes
+        - status (string, required)
+        - result  
+            - message (string)
+            - vehicle_id (number)
+            - driver_id (number)
+            - num_entries (number)
+            - entries ( array[FarePaymentEntry])
+
+            
+                    
 # Group Suspension
 
 ## Vehicle Suspend List [/vehicle/suspend_list/]
@@ -252,33 +286,37 @@ Request (application/json)
     + trip_status_id (number)
     + contract_number (string)
     + estimated_amount (number)
+
+## FarePaymentEntry (object)
+    + fare (integer)
+    + cc_tip (float)
+    + created_on (string)
     
+
 ## CancelFareRequest (object)
++ fare_number: 9241 (string, required)
 + fare_type: immediate (enum[string], optional)
     - immediate
     - future
-+ operator_id: 1001 (number, optional)
-+ taxi: 8080 (number, optional)
-+ fleet: 2 (number, optional)
-+ fare_number: 9241 (string, required)
 + cancel_reason : testing (string, optional)
 + cancel_code: 12 (number, optional)
 
 
 ## UpdateFareRequest (object)
+- fare_number: 9241 (string, required)
 - action: keep no show (enum[string], required)
     - reject no show
     - accept no show
     - keep no show
     - cancel
-- operator_id: 10001 (number)
+- reason : 'waited too long' (string, required)    
+- operator_id: 10001 (number, required)
 - operator_name: samira (string)
 - taxi: 8080 (number)
 - fleet: 2 (number)
-- fare_number: 9241 (string, required)
-- reason : 'waited too long' (string)    
+- cancel_code: 12 (number, optional)
 
-    
+   
 ## SuspendVehicle (object)
 - status: 1 (number)
 - vehicle_id: 8080 (number)
