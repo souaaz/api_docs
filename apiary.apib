@@ -119,7 +119,7 @@ HOST: http://54.84.8.232:25890
 ## Vehicle suspend [/vehicle/action/]
 ### Vehicle suspend [POST]
 
-+ Request (application/json)
++ Request 1 (application/json)
     + Attributes
        
         - action (string, required) 
@@ -138,7 +138,32 @@ HOST: http://54.84.8.232:25890
                 "msg_for_driver" :   "test"
             }
         
++ Response 200 (application/json)
 
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
+        
++ Request 2 (application/json)
+    + Body
+    
+            {
+                "action" : "reinstate",
+                "vehicle_id" : 8080,
+                "authority_id" : 999,
+                "msg_for_dispatch" :  "test dispatch",
+                "msg_for_driver" :   "test"
+            }
+        
 
 
 + Response 200 (application/json)
@@ -155,7 +180,20 @@ HOST: http://54.84.8.232:25890
                 "message": "success"
                 }
             }
+
++ Request 3 (application/json)
+    + Body
+    
+            {
+                "action" : "reinstate",
+                "vehicle_id" : 8080,
+                "authority_id" : 999
+            }
         
+
+
++ Response 500 (application/json)
+
 ## Driver suspend list [/driver/suspend_list/]
 ### Driver Suspend List [GET]
 
