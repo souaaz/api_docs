@@ -131,6 +131,7 @@ HOST: http://54.84.8.232:25890
     + Body
     
             {
+            
                 "action" : "suspend",
                 "vehicle_id" : 8080,
                 "authority_id" : 999,
@@ -428,12 +429,30 @@ Request (application/json)
 - driver_id: 8080 (number)
 
 ## SuspensionDriverData (object)
-- driver_id (number)
-- suspension_timestamp (number)
-- suspension_time_min (number)
-- suspension_time (number)
+    - driver_id (number)
+    - suspension_timestamp (number)
+    - suspension_time_min (number)
+    - suspension_time (number)
 
+## StreetRange (object)
+    - low (number)
+    - lat (float)
+    - lon (float)
+    - locator (string)
+    - number_type (string)
+    - postal_code (string)
+    - local_call (number)
+    - no_service (number)
+    - priority (number)
+    - restricted (number)
+    - dispatch_zones (array[number])
 
+## StreetRangeResponse (object)
+    - status (string)
+    - result
+        - message (string)
+        - num_entries (number)
+        - ranges (array[StreetRange])
 
 ## ResultNoDataOK (object)
     - status (string)
