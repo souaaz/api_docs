@@ -44,8 +44,9 @@ HOST: http://54.84.8.232:25890
         - search_type (enum[string], optional)
             - vehicle
             - driver
-        - driver_id (number)
-        - vehicle_id (number)
+        - One Of 
+            - driver_id (number)
+            - vehicle_id (number)
         - num_records (number, optional)
       
     + Body 
@@ -63,8 +64,9 @@ HOST: http://54.84.8.232:25890
         - status (string, required)
         - result  
             - message (string)
-            - vehicle_id (number)
-            - driver_id (number)
+            - One Of 
+                - vehicle_id (number)
+                - driver_id (number)
             - num_entries (number)
             - entries ( array[FarePaymentEntry])
 
@@ -76,8 +78,9 @@ HOST: http://54.84.8.232:25890
     + Attributes
         - start_date (string, required)
         - end_date (string, required)
-        - vehicle_id (number)
-        - driver_id (number)
+        - One Of         
+            - vehicle_id (number)
+            - driver_id (number)
         - num_records (number, optional)
       
     + Body 
@@ -94,8 +97,9 @@ HOST: http://54.84.8.232:25890
         - status (string, required)
         - result  
             - message (string)
-            - vehicle_id (number)
-            - driver_id (number)
+            - One Of             
+                - vehicle_id (number)
+                - driver_id (number)
             - num_entries (number)
             - entries ( array[FareSourceEntry])
 
