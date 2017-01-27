@@ -7,6 +7,21 @@ HOST: http://54.84.8.232:25890
 
 # CWEBSAPI
 
+# Group Admin
+
+## Version [/cwebs/version/]
+
+### Get CWEBS VERSION [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Body
+    
+            + status (string)
+            + result
+                + version (string)
+            
 # Group Account
 
 ## Read All accounts [/account/corporate/{account_no}/{customer_no}/]
@@ -16,8 +31,8 @@ HOST: http://54.84.8.232:25890
 + Request (application/json)
 
 + Parameters
-    + account_no: 5000 (number)
-    + customer_no: 0 (number)
+    + account_no: 5000 
+    + customer_no: 0 
     
     
     
