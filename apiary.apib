@@ -305,21 +305,74 @@ Request (application/json)
     + Attributes
         ResultNoDataOK 
 
-## List Street Ranges [/address/read_street_ranges/]
+
+# Group Street Manager
+
+## Street Ranges [/address/read_street_ranges/]
 
 ### Retrieve Street List [POST]
 
 + Request (application/json)
     + Attributes
-        + street_id (number)
-        + street_name (string)
+        + One Of
+            + street_id (number)
+            + street_name (string)
         + city (string)
         + postal_code (string)
+
         
     + Body
     
             {
                 "street_id" : 25007 
+            }
+       
++ Response 200 (application/json)
+    + Attributes
+        - status
+        - result
+            - message (string)
+            - num_entries (number)
+            - ranges  (array[StreetRangeEntry])
+        
+
+## Street Ranges [/address/update_street_ranges/]
+
+### Store Street List [POST]
+
++ Request (application/json)
+    + Attributes
+        + One Of
+            + street_name (string)
+            + street_id (number)
+        + postal_code (string)
+        + city (string)
+        + num_entries (number)
+        + ranges (array[StreetRangeEntry])
+        
+    + Body
+    
+            {
+                "street_id" : 25007,
+                "num_entries" : 1,
+                "ranges" : 
+                [
+                    {
+                    "low" : 56,
+                    "lat" : 45.0,
+                    "lon" : 73.1,
+                    "locator" : '',  
+                    "number_type" : 120,                                
+                    "postal_code" : "K1V 98C",
+                    "bid" :  0,
+                    "local_call" : 0,
+                    "no_service" : 0,
+                    "priority" : 0,
+                    "restricted" : 0,                
+                    "fleet_number": 0,
+                    "dispatch_zones" : [ -1,-1,-1,-1 ]
+                ]
+                }
             }
        
 + Response 200 (application/json)
@@ -330,6 +383,8 @@ Request (application/json)
            
             
 # Data Structures
+
+    
 ## AddressInfo (object)
     + city (string)
     + country_code (string)
@@ -458,7 +513,7 @@ Request (application/json)
     - suspension_time_min (number)
     - suspension_time (number)
 
-## StreetRange (object)
+## StreetRangeEntry (object)
     - low (number)
     - lat (float)
     - lon (float)
@@ -469,7 +524,10 @@ Request (application/json)
     - no_service (number)
     - priority (number)
     - restricted (number)
+    - fleet_number (number)
     - dispatch_zones (array[number])
+
+
 
 ## StreetRangeResponse (object)
     - status (string)
