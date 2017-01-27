@@ -12,7 +12,8 @@ HOST: http://54.84.8.232:25890
 ## Version [/cwebs/version/]
 
 ### Get CWEBS VERSION [GET]
-+ Request (application/json)
+
++ Request  (application/json)
 
 + Response 200 (application/json)
 
@@ -30,12 +31,11 @@ HOST: http://54.84.8.232:25890
 
 + Request (application/json)
 
-+ Parameters
-    + account_no: 5000 
-    + customer_no: 0 
+    + Parameters
+        + account_no: 5000 
+        + customer_no: 0 
     
-    
-    
+
 + Response 200  (application/json)  
 
 
@@ -365,7 +365,7 @@ Request (application/json)
         - status
         - result
             - message (string)
-            - num_entries (number)
+            - count (number)
             - ranges  (array[StreetRangeEntry])
         
 
@@ -387,7 +387,7 @@ Request (application/json)
     
             {
                 "street_id" : 25007,
-                "num_entries" : 1,
+                "count" : 1,
                 "ranges" : 
                 [
                     {
