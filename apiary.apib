@@ -1,8 +1,5 @@
 FORMAT: 1A
 HOST: http://54.84.8.232:25890
-//DEV4 - 54.84.8.232:25889
-//DEV2 - 54.84.8.232:25890
-//SMAUG - 10.10.1.239:8889
 //HOST: http://10.10.1.239:8889
 
 # CWEBSAPI
@@ -23,19 +20,29 @@ HOST: http://54.84.8.232:25890
             
 # Group Account
 
-## Read All accounts [/account/corporate/{account_no}/{customer_no}/]
+# Read accounts [/account/corporate/{accountno}/{customerno}/]
 
-### Read customer account [GET]
-
-
-    + Parameters
-        + account_no: 5000 
-        + customer_no: 0 
+## Read customer account [GET]
++ Parameters
+    + accountno : 5000 (number) 
+    + customerno : 0 (number) 
     
 
 + Response 200  (application/json)  
 
 
+## Get  Read All accounts [/account/corporate/all/]
+### Read all accounts [GET]
++ Response 200 (application/json)
+
+    + Body
+    
+            + status (string)
+            + accounts (array[AccountPrompt])
+            + result
+                + message (string)
+                + number_of_accounts (number)
+                
 #Group Fares 
 
 
@@ -414,6 +421,10 @@ Request (application/json)
             
 # Data Structures
 
+## AccountPrompt (object)
+    + prompts (array[string])
+    + account_number (number)
+    + customer_number (number)
     
 ## AddressInfo (object)
     + city (string)
