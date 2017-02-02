@@ -39,6 +39,47 @@ HOST: http://54.84.8.232:25890
                 + message (string)
                 + number_of_accounts (number)
                 
+# Group messages
+//  /message/send_driver_msg/   
+//      "driver_id" :   8089, *M*
+//       "operator_id": 1003, *M*
+//        "mesg" : [ "DRIVER MESSAGE FROM POSTMAN" ]  *M*
+//       "farenumber" : 233, *O*
+//       "driver_name" : "Robert C", *O*
+//       "operator_name" : "POSTMAN",     *O*
+//     "zone" : 17     *O*
+
+// /message/send_vehicle_msg/   
+//      "taxi" :   8089, *M*
+//       "operator_id": 1003, *M*
+//        "mesg" : [ "DRIVER MESSAGE FROM POSTMAN" ]  *M*
+//       "farenumber" : 233, *O*
+//       "driver_name" : "Robert C", *O*
+//       "operator_name" : "POSTMAN",     *O*
+//     "zone" : 17     *O*
+
+// /message/send_fleet_msg/
+//    "fleet" : 2 , *m*
+//     "operator_id" : 1002, *M*
+//     "mesg" : [ "FLEET MESSAGE FROM POSTMAN" ] *M*
+//     "operator_name" : "POSTMAN", *O*
+//     "zone" : 17, *O*
+//       "farenumber" : 233,  *O*
+
+// /device/sendmsg///
+//    oneof: 
+//      "driver_id" : 8089 , 
+//      "vehicle_id" : 8089,    
+//    "device" : oneof : "device", "vehicle"
+//     "msgtext": "sample text message",
+
+
+// /device/clear_emergency/
+//    "taxi" : 8089,
+//    "operator_id" : 1200,
+//    "fleet" : [2,3,4]
+
+
 #Group Fares 
 
 
