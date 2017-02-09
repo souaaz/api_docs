@@ -40,48 +40,143 @@ HOST: http://54.84.8.232:25890
                 + number_of_accounts (number)
                 
 # Group messages
-//  /message/send_driver_msg/   
-//      "driver_id" :   8089, *M*
-//       "operator_id": 1003, *M*
-//        "mesg" : [ "DRIVER MESSAGE FROM POSTMAN" ]  *M*
-//       "company_id": 1, *M* *NEW*
-//       "farenumber" : 233, *O*
-//       "driver_name" : "Robert C", *O*
-//       "operator_name" : "POSTMAN",     *O*
-//     "zone" : 17     *O*
+## Send Driver Message [/message/send_driver_msg/]
+### Send Message [POST]
++ Request (application/json)
+    + Attributes
+    
+        - driver_id (number)        *M*
+        - operator_id (number)     *M*
+        - mesg (array[string])      *M*
+        - company_id (number)       *M* *NEW*
+        - farenumber (number)       *O*
+        - driver_name (string)      *O*
+        - operator_name (string)    *O*
+        - zone (number)             *O*
 
-// /message/send_vehicle_msg/   
-//      "taxi" :   8089, *M*
-//       "operator_id": 1003, *M*
-//        "mesg" : [ "DRIVER MESSAGE FROM POSTMAN" ]  *M*
-//       "company_id": 1, *M* *NEW*
-//       "farenumber" : 233, *O*
-//       "driver_name" : "Robert C", *O*
-//       "operator_name" : "POSTMAN",     *O*
-//     "zone" : 17     *O*
++ Response 200 (application/json)
 
-// /message/send_fleet_msg/
-//    "fleet" : 2 , *m*
-//     "operator_id" : 1002, *M*
-//     "mesg" : [ "FLEET MESSAGE FROM POSTMAN" ] *M*
-//       "company_id": 1, *M* *NEW*
-//     "operator_name" : "POSTMAN", *O*
-//     "zone" : 17, *O*
-//       "farenumber" : 233,  *O*
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
 
-// /device/sendmsg///
-//      "vehicle_id" : 8089,    
-//     "msgtext": "sample text message",
-//       "company_id": 1, *M* *NEW*
+## Send Vehicle Message [/message/send_vehicle_msg/]
+### Send Message [POST]
++ Request (application/json)
+    + Attributes
+    
+        - taxi (number)        *M*
+        - operator_id (number)     *M*
+        - mesg (array[string])      *M*
+        - company_id (number)       *M* *NEW*
+        - farenumber (number)       *O*
+        - driver_name (string)      *O*
+        - operator_name (string)    *O*
+        - zone (number)             *O*
 
-// /device/clear_emergency/
-//    "taxi" : 8089,
-//    "operator_id" : 1200,
-//    "fleet" : [2,3,4]
++ Response 200 (application/json)
 
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
+
+
+## Send Fleet Message [/message/send_fleet_msg/]
+### Send Fleet Message [POST]
++ Request (application/json)
+    + Attributes
+    
+        - fleet (number)        *M*
+        - operator_id (number)     *M*
+        - mesg (array[string])      *M*
+        - company_id (number)       *M* *NEW*
+        - operator_name (string)    *O*
+        - zone (number)             *O*
+
++ Response 200 (application/json)
+
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
+            
+## Send device/sendmsg [/device/sendmsg/]
+### Send device sendmsg  [POST]
++ Request (application/json)
+    + Attributes
+    
+        - vehicle_id (number)       *M*
+        - msgtext (string)          *M*
+        - company_id (number)       *M* *NEW*
+ 
+
++ Response 200 (application/json)
+
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
+
+## clear_emergency [/device/clear_emergency/]
+### clear_emergency  [POST]
++ Request (application/json)
+    + Attributes
+    
+        - taxi (number)         *M*
+        - operator_id (number)  *M*
+        - fleet (number)        *M* *NEW*
+ 
+
++ Response 200 (application/json)
+
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
 
 #Group Fares 
-
 
 ## Read Book Order [/fares/read_book_order/]
 
@@ -238,7 +333,8 @@ HOST: http://54.84.8.232:25890
                 "vehicle_id" : 8080,
                 "authority_id" : 999,
                 "msg_for_dispatch" :  "test dispatch",
-                "msg_for_driver" :   "test"
+                "msg_for_driver" :   "test",
+                "company_id" : 1,
             }
         
 
@@ -264,7 +360,8 @@ HOST: http://54.84.8.232:25890
             {
                 "action" : "suspend",
                 "vehicle_id" : 8080,
-                "authority_id" : 999
+                "authority_id" : 999,
+                "company_id" : 1,
             }
         
 
@@ -312,6 +409,12 @@ Request (application/json)
         - authority_id (number, required)
         - msg_for_dispatch (string)
         - msg_for_driver (string)
+        - company_id (number, required)
+        - suspend_datetime_start (string)
+        - suspend_datetime_end (string)
+        - duration
+            - days (number)
+            - hours (number)
         
     + Body
     
@@ -321,9 +424,17 @@ Request (application/json)
             "fleet" : 2,
             "authority_id" : "667",
             "msg_id" : 1,
+            "company_id" : 1,
             "db_action_id" : 3572,
             "msg_for_dispatch" : "test message for dispatch test message for dispatch",
-            "msg_for_driver" : "test message for driver test message for driver"
+            "msg_for_driver" : "test message for driver test message for driver",
+            "suspend_datetime_start": "2017-02-09 14:00",
+            "suspend_datetime_end": "2017-02-09 17:00",
+            "duration" : 
+                    {   
+                        "days" : 0, 
+                        "hours": 5 
+                    },
             }
     
 + Response 200 (application/json)
@@ -580,16 +691,19 @@ Request (application/json)
 - authority_id: 999 (number)
 - suspension_time: 10 (number)
 - suspension_reasons: ['too fast', 'always late'] array[string]
+- company_id: 1 (number)
 
 ## SuspendDriver (object)
 - status: 1 (number)
 - driver_id: 8080 (number)
+- company_id: 1 (number)
 
 ## SuspensionDriverData (object)
     - driver_id (number)
     - suspension_timestamp (number)
     - suspension_time_min (number)
     - suspension_time (number)
+    - company_id (number)
 
 ## StreetRangeEntry (object)
     - low (number)
