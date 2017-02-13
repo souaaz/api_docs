@@ -162,18 +162,18 @@ HOST: http://54.84.8.232:25890
         - fleet (number)        *M* *NEW*
  
 
-+ Response 200 (application/json)
++ Response 500 (application/json)
 
-    + Attributes
-        ResultNoDataOK 
++ Attributes
+        ResultNoData500        
         
     + Body
     
             {
         
-                "status": "200 OK",
+                "status": "200 Internal Server Error",
                 "result": {
-                "message": "success"
+                "message": "You must provide fleet number and taxi number"
                 }
             }
 
@@ -508,7 +508,7 @@ Request (application/json)
                 "street_id" : 25007 
             }
        
-+ Response 404
++ Response 404 (application/json)
 
     + Attributes
         - status
@@ -557,7 +557,7 @@ Request (application/json)
                 }
             }
        
-+ Response 404 
++ Response 404 (application/json)
     + Attributes
         StreetRangeResponse
         
