@@ -299,6 +299,7 @@ HOST: http://54.84.8.232:25890
         - authority_id (number, required)
         - msg_for_dispatch (string)
         - msg_for_driver (string)
+        - company_id (number)
         
     + Body
     
@@ -308,7 +309,8 @@ HOST: http://54.84.8.232:25890
                 "vehicle_id" : 8080,
                 "authority_id" : 999,
                 "msg_for_dispatch" :  "test dispatch",
-                "msg_for_driver" :   "test"
+                "msg_for_driver" :   "test",
+                "company_id" : 1
             }
         
 + Response 200 (application/json)
@@ -411,17 +413,15 @@ Request (application/json)
         - msg_for_dispatch (string)
         - msg_for_driver (string)
         - company_id (number, required)
-        - suspend_datetime_start (string)
-        - suspend_datetime_end (string)
-        - duration
-            - days (number)
-            - hours (number)
+        - suspension_datetime_start (string)
+        - suspension_datetime_end (string)
+ 
         
     + Body
     
             {
             "action" : "suspend",
-            "driver_id" :  1234,
+            "driver_id" :  8080,
             "fleet" : 2,
             "authority_id" : "667",
             "msg_id" : 1,
@@ -429,13 +429,8 @@ Request (application/json)
             "db_action_id" : 3572,
             "msg_for_dispatch" : "test message for dispatch test message for dispatch",
             "msg_for_driver" : "test message for driver test message for driver",
-            "suspend_datetime_start": "2017-02-09 14:00",
-            "suspend_datetime_end": "2017-02-09 17:00",
-            "duration" : 
-                    {   
-                        "days" : 0, 
-                        "hours": 5 
-                    },
+            "suspension_datetime_start": "2017-02-13 14:00",
+            "suspension_datetime_end": "2017-02-15 17:00",
             }
     
 + Response 200 (application/json)
