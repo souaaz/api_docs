@@ -75,7 +75,7 @@ HOST: http://54.84.8.232:25890
     + Body
     
             {
-                "driver_id" : {DRIVER_ID},
+                "driver_id" : 8080,
                 "operator_id": 1073,
                 "mesg" : ["too fast", "please rest"],
                 "company_id": 1,       
@@ -125,6 +125,32 @@ HOST: http://54.84.8.232:25890
                 }
             }
 
++ Request (application/json)
+
+    + Body
+    
+            {
+                "taxi" : 8080,
+                "operator_id": 1073,
+                "mesg" : ["too fast", "please rest"],
+                "company_id": 1,       
+                "farenumber" : 1075         
+            }
+  
++ Response 200 (application/json)
+    + Attributes
+            ResultNoDataOK 
+        
+    + Body
+    
+            {
+                "status": "200 OK",
+                "result": {
+                    "message": "success"
+                }
+            }   
+        
+        
 
 ## Send Fleet Message [/message/send_fleet_msg/]
 ### Send Fleet Message [POST]
