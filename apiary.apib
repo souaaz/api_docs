@@ -178,7 +178,35 @@ HOST: http://54.84.8.232:25890
                     "message": "failure"
                 }
             }
-            
+
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "fleet" : 2,
+                "operator_id": 1073,
+                "mesg" : ["too fast", "please rest"],
+                "company_id": 1,       
+                "farenumber" : 1075         
+            }
+  
++ Response 200 (application/json)
+    + Attributes
+            ResultNoDataOK 
+        
+    + Body
+    
+            {
+                "status": "200 OK",
+                "result": {
+                    "message": "success"
+                }
+            }   
+        
+        
+                   
 ## Send device/sendmsg [/device/sendmsg/]
 ### Send device sendmsg  [POST]
 + Request (application/json)
@@ -229,6 +257,32 @@ HOST: http://54.84.8.232:25890
                 }
             }
 
++ Request (application/json)
+    + Body
+    
+            {
+    
+                - taxi: 8080  (number)        
+                - operator_id: 1073 (number) 
+                - fleet: 2  (number)    
+            }
+ 
+
++ Response 200 (application/json)
+
+    + Attributes
+        ResultNoDataOK        
+        
+        + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
+            
 #Group Fares 
 
 ## Read Book Order [/fares/read_book_order/]
