@@ -164,7 +164,7 @@ HOST: http://54.84.8.232:25890
         - operator_name (string)    *O*
         - zone (number)             *O*
 
-+ Response 500 (application/json)
++ Response 200 (application/json)
     
     + Attributes
         ResultNoData500
@@ -261,10 +261,9 @@ HOST: http://54.84.8.232:25890
     + Body
     
             {
-    
-                - taxi: 8080  (number)        
-                - operator_id: 1073 (number) 
-                - fleet: 2  (number)    
+                "taxi" : 8080 ,
+                "operator_id" : 1073 ,
+                "fleet" : 2 
             }
  
 
@@ -775,7 +774,7 @@ Request (application/json)
     - accept no show
     - keep no show
     - cancel
-- reason : 'waited too long' (string, required)    
+- reason : waited too long (string, required)    
 - operator_id: 10001 (number, required)
 - operator_name: samira (string)
 - taxi: 8080 (number)
@@ -793,7 +792,7 @@ Request (application/json)
 - suspension_time_min: 1484771831 (number)
 - authority_id: 999 (number)
 - suspension_time: 10 (number)
-- suspension_reasons: ['too fast', 'always late'] array[string]
+- suspension_reasons: [too fast, always late] array[string]
 - company_id: 1 (number)
 
 ## SuspendDriver (object)
