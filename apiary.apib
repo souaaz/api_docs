@@ -84,7 +84,7 @@ HOST: http://54.84.8.232:25890
   
 + Response 200 (application/json)
     + Attributes
-            ResultNoDataOK 
+        ResultNoDataOK 
         
     + Body
     
@@ -440,8 +440,6 @@ HOST: http://54.84.8.232:25890
                 "action" : "reinstate",
                 "vehicle_id" : 8080,
                 "authority_id" : 999,
-                "msg_for_dispatch" :  "test dispatch",
-                "msg_for_driver" :   "test",
                 "company_id" : 1
             }
         
@@ -489,7 +487,34 @@ HOST: http://54.84.8.232:25890
             }
     
     
++ Request 4 (application/json)
+    + Body
+    
+            {  
+                "action" : "suspend",
+                "vehicle_id" : 8080,
+                "company_id" : 1,
+                "suspension_datetime_end" : "2017-2-15 17:30",
+                "suspension_datetime_start" : "2017-2-15 14:00",
+                "msg_for_dispatch" : "pppppppppppppppp",
+                "msg_for_driver" :  "llll"
+            }
+ 
++ Response 200 (application/json)
 
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
+            
 ## Driver suspend list [/driver/suspend_list/]
 ### Driver Suspend List [GET]
 
@@ -552,7 +577,38 @@ Request (application/json)
                 }     
             }
 
- 
++ Request 2 (application/json)
+    + Body 
+    
+            {
+                "action" : "suspend",
+                "driver_id" :  8080,
+                "fleet" : 2,
+                "authority_id" : "667",
+                "msg_id" : 1,
+                "company_id" : 1,
+                "db_action_id" : 3572,
+                "msg_for_dispatch" : "test message for dispatch test message for dispatch",
+                "msg_for_driver" : "test message for driver test message for driver",
+                "suspension_datetime_start": "2017-02-15 14:00",
+                "suspension_datetime_end": "2017-02-15 17:30"
+            }
+            
+           
++ Response 200 (application/json)
+
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body 
+    
+            {
+                "status": "200 OK",
+                "result": {
+                "message": "OK"
+                }     
+            }
+            
 # Group Update-Cancel-No Show
 
 ## Cancel Request [/dispatcher/cancel_book_order/]
