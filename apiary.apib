@@ -648,6 +648,23 @@ Request (application/json)
         ResultNoDataOK 
 
 
++ Request 2 (application/json)
+    + Body
+    
+            {
+                "fare_number" : 9241,
+                "action" : "accept no show",
+                "reason": "nobody at address",
+                "operator_id" : 1075
+            }
+     
+        
+
++ Response 200 (application/json)
+
+    + Attributes
+        ResultNoDataOK 
+        
 # Group Street Manager
 
 ## Street Ranges [/address/read_street_ranges/]
