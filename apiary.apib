@@ -251,7 +251,7 @@ HOST: http://54.84.8.232:25890
     
             {
         
-                "status": "200 Internal Server Error",
+                "status": "500 Internal Server Error",
                 "result": {
                 "message": "You must provide fleet number and taxi number"
                 }
@@ -660,10 +660,17 @@ Request (application/json)
      
         
 
-+ Response 200 (application/json)
++ Response 500 (application/json)
+                
+    + Body
+        
+                {
+                    "status": "500 Internal Server Error",
+                    "result": {
+                    "message": "fleet and taxi required for no show"
+                }
 
-    + Attributes
-        ResultNoDataOK 
+
         
 # Group Street Manager
 
