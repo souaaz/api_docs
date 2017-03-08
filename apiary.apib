@@ -94,7 +94,30 @@ FORMAT: 1A
                 }
             }   
         
++ Request (application/json)
+
+    + Body
+    
+            {
+                "driver_id" : 8080,
+                "operator_id": 1073,
+                "mesg" : ["too fast", "please rest"],
+                "farenumber" : 1075         
+            }
+  
++ Response 200 (application/json)
+    + Attributes
+        ResultNoDataOK 
         
+    + Body
+    
+            {
+                "status": "200 OK",
+                "result": {
+                    "message": "success"
+                }
+            }   
+            
 ## Send Vehicle Message [/message/send_vehicle_msg/]
 ### Send Message [POST]
 + Request (application/json)
@@ -149,7 +172,31 @@ FORMAT: 1A
                 }
             }   
         
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "taxi" : 8080,
+                "operator_id": 1073,
+                "mesg" : ["too fast", "please rest"],
+                "farenumber" : 1075         
+            }
+  
++ Response 200 (application/json)
+    + Attributes
+            ResultNoDataOK 
         
+    + Body
+    
+            {
+                "status": "200 OK",
+                "result": {
+                    "message": "success"
+                }
+            }   
+                
 
 ## Send Fleet Message [/message/send_fleet_msg/]
 ### Send Fleet Message [POST]
@@ -204,7 +251,31 @@ FORMAT: 1A
                 }
             }   
         
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "fleet" : 2,
+                "operator_id": 1073,
+                "mesg" : ["too fast", "please rest"],
+                "farenumber" : 1075         
+            }
+  
++ Response 200 (application/json)
+    + Attributes
+            ResultNoDataOK 
         
+    + Body
+    
+            {
+                "status": "200 OK",
+                "result": {
+                    "message": "success"
+                }
+            }   
+                
                    
 ## Send device/sendmsg [/device/sendmsg/]
 ### Send device sendmsg  [POST]
@@ -231,6 +302,28 @@ FORMAT: 1A
                 }
             }
 
++ Request (application/json)
+    + Attributes
+    
+        - vehicle_id (number)       *M*
+        - msgtext (string)          *M*
+ 
+
++ Response 200 (application/json)
+
+    + Attributes
+        ResultNoDataOK 
+        
+    + Body
+    
+            {
+        
+                "status": "200 OK",
+                "result": {
+                "message": "success"
+                }
+            }
+            
 ## clear_emergency [/device/clear_emergency/]
 ### clear_emergency  [POST]
 + Request (application/json)
