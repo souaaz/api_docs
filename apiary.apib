@@ -38,7 +38,47 @@ FORMAT: 1A
             + result
                 + message (string)
                 + number_of_accounts (number)
-                
+
+
+# Validate account [/account/validate/]
+
+## Validate customer account [POST]
++ Request (application/json)  
+    + Attributes
+        + customer_number (string)
+        + account_number (string)
+        + prompts array(string)
+    
++ Response 200  (application/json)  
+
+    + Attributes
+        + status (string)
+  
++ Request (application/json)
+
+    + Body
+    
+            {
+                "account_number" : 5000,
+                "customer_number" : 0,
+                "operator_id": 1073,
+                "prompts" : ["prompt1", "prompt2"],
+                     
+            }
+  
++ Response 200 (application/json)
+    + Attributes
+            ResultNoDataOK 
+        
+    + Body
+    
+            {
+                "status": "200 OK",
+                "result": {
+                    "message": "success"
+                }
+            }   
+             
 # Group messages
 ## Send Driver Message [/message/send_driver_msg/]
 ### Send Message [POST]
